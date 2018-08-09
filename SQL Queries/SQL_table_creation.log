@@ -1,0 +1,328 @@
+-- Executing query:
+DROP TABLE donors
+Query returned successfully with no result in 36 msec.
+
+-- Executing query:
+CREATE TABLE donors (
+	donor_id	varchar(32),
+	donor_city	varchar(50),
+	donor_state	varchar(20),
+	donor_is_teacher	varchar(3),
+	donor_zip	smallint
+)
+Query returned successfully with no result in 275 msec.
+
+-- Executing query:
+SELECT * FROM donors
+Total query runtime: 15 msec
+0 rows retrieved.
+
+-- Executing query:
+COPY donors(donor_id,donor_city,donor_state,donor_is_teacher,donor_zip)
+FROM '/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data/Donors.csv'
+DELIMITER ','
+CSV HEADER
+ERROR:  invalid input syntax for integer: "N2J"
+CONTEXT:  COPY donors, line 28152, column donor_zip: "N2J"
+********** Error **********
+
+ERROR: invalid input syntax for integer: "N2J"
+SQL state: 22P02
+Context: COPY donors, line 28152, column donor_zip: "N2J"
+
+-- Executing query:
+DROP TABLE donors
+Query returned successfully with no result in 14 msec.
+
+-- Executing query:
+CREATE TABLE donors (
+	donor_id	varchar(32),
+	donor_city	varchar(50),
+	donor_state	varchar(20),
+	donor_is_teacher	varchar(3),
+	donor_zip	varchar(3)
+)
+Query returned successfully with no result in 24 msec.
+
+-- Executing query:
+SELECT * FROM donors
+Total query runtime: 14 msec
+0 rows retrieved.
+
+-- Executing query:
+COPY donors(donor_id, donor_city, donor_state, donor_is_teacher, donor_zip)
+FROM '/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data.csv'
+DELIMITER ','
+CSV HEADER
+ERROR:  could not open file "/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data.csv" for reading: No such file or directory
+HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy.
+
+********** Error **********
+
+ERROR: could not open file "/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data.csv" for reading: No such file or directory
+SQL state: 58P01
+Hint: COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy.
+
+-- Executing query:
+COPY donors(donor_id, donor_city, donor_state, donor_is_teacher, donor_zip)
+FROM '/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data/Donors.csv'
+DELIMITER ','
+CSV HEADER
+Query returned successfully: 2122640 rows affected, 40.9 secs execution time.
+
+-- Executing query:
+CREATE TABLE donations (
+	project_id	varchar(32),
+	donation_id	varchar(32),
+	donor_id	varchar(32),
+	donation_included_optional_donation varchar(3),
+	donation_amount	double precision,
+	donor_cart_sequence bigint,
+	donation_received_date text
+)
+Query returned successfully with no result in 54 msec.
+
+-- Executing query:
+COPY donations(project_id, donation_id, donor_id, donation_included_optional_donation, donation_amount, donor_cart_sequence, donation_received_date)
+FROM '/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data/Donations.csv'
+DELIMITER ','
+CSV HEADER
+Query returned successfully: 4687884 rows affected, 03:40 minutes execution time.
+
+-- Executing query:
+CREATE TABLE resources (
+	project_id varchar(32),
+	resource_item_name text,
+	resource_quantity bigint,
+	resource_unit_price double precision,
+	resource_vendor_name text
+)
+Query returned successfully with no result in 47 msec.
+
+-- Executing query:
+COPY resources(project_id, resource_item_name, resource_quantity, resource_unit_price, resource_vendor_name)
+FROM '/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data/Resources.csv'
+DELIMITER ','
+CSV HEADER
+ERROR:  invalid input syntax for integer: "1.0"
+CONTEXT:  COPY resources, line 2, column resource_quantity: "1.0"
+
+********** Error **********
+
+ERROR: invalid input syntax for integer: "1.0"
+SQL state: 22P02
+Context: COPY resources, line 2, column resource_quantity: "1.0"
+
+-- Executing query:
+DROP TABLE resources
+Query returned successfully with no result in 24 msec.
+
+-- Executing query:
+CREATE TABLE resources (
+	project_id varchar(32),
+	resource_item_name text,
+	resource_quantity double precision,
+	resource_unit_price double precision,
+	resource_vendor_name text
+)
+Query returned successfully with no result in 53 msec.
+
+-- Executing query:
+COPY resources(project_id, resource_item_name, resource_quantity, resource_unit_price, resource_vendor_name)
+FROM '/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data/Resources.csv'
+DELIMITER ','
+CSV HEADER
+Query returned successfully: 7210448 rows affected, 04:02 minutes execution time.
+
+-- Executing query:
+CREATE TABLE teachers (
+	teacher_id	varchar(32),
+	teacher_prefix	varchar(10),
+	teacher_first_project_posted_date varchar(20)
+)
+Query returned successfully with no result in 26 msec.
+
+-- Executing query:
+COPY teachers(teacher_id, teacher_prefix, teacher_first_project_posted_date)
+FROM '/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data/Teachers.csv'
+DELIMITER ','
+CSV HEADER
+Query returned successfully: 402900 rows affected, 2.2 secs execution time.
+
+-- Executing query:
+CREATE TABLE schools (
+	school_id	varchar(32),
+	school_name	text,
+	school_metro_type varchar(20),
+	school_percentage_free_lunch double precision,
+	school_state	varchar(20),
+	school_zip	varchar(3),
+	school_city	text,
+	school_county	text,
+	school_district	text,
+)
+ERROR:  syntax error at or near ")"
+LINE 11: )
+         ^
+
+********** Error **********
+
+ERROR: syntax error at or near ")"
+SQL state: 42601
+Character: 261
+
+-- Executing query:
+CREATE TABLE schools (
+	school_id	varchar(32),
+	school_name	text,
+	school_metro_type varchar(20),
+	school_percentage_free_lunch double precision,
+	school_state	varchar(20),
+	school_zip	varchar(3),
+	school_city	text,
+	school_county	text,
+	school_district	text
+)
+Query returned successfully with no result in 41 msec.
+
+-- Executing query:
+SELECT * FROM SCHOOLS
+WHERE ROWNUM <= 5
+ERROR:  column "rownum" does not exist
+LINE 2: WHERE ROWNUM <= 5
+              ^
+
+********** Error **********
+
+ERROR: column "rownum" does not exist
+SQL state: 42703
+Character: 29
+
+-- Executing query:
+SELECT * FROM SCHOOLS
+WHERE ROW_NUM <= 5
+ERROR:  column "row_num" does not exist
+LINE 2: WHERE ROW_NUM <= 5
+              ^
+
+********** Error **********
+
+ERROR: column "row_num" does not exist
+SQL state: 42703
+Character: 29
+
+-- Executing query:
+SELECT * FROM SCHOOLS
+LIMIT 5
+Total query runtime: 14 msec
+0 rows retrieved.
+
+-- Executing query:
+COPY schools(school_id, school_name, school_metro_type, school_percentage_free_lunch, school_state, school_zip, school_city, school_county, school_district)
+FROM '/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data/Schools.csv'
+DELIMITER ','
+CSV HEADER
+ERROR:  value too long for type character varying(3)
+CONTEXT:  COPY schools, line 2, column school_zip: "26711"
+
+********** Error **********
+
+ERROR: value too long for type character varying(3)
+SQL state: 22001
+Context: COPY schools, line 2, column school_zip: "26711"
+
+-- Executing query:
+DROP TABLE schools
+Query returned successfully with no result in 24 msec.
+
+-- Executing query:
+CREATE TABLE schools (
+	school_id	varchar(32),
+	school_name	text,
+	school_metro_type varchar(20),
+	school_percentage_free_lunch double precision,
+	school_state	varchar(20),
+	school_zip	bigint,
+	school_city	text,
+	school_county	text,
+	school_district	text
+)
+Query returned successfully with no result in 42 msec.
+
+-- Executing query:
+COPY schools(school_id, school_name, school_metro_type, school_percentage_free_lunch, school_state, school_zip, school_city, school_county, school_district)
+FROM '/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data/Schools.csv'
+DELIMITER ','
+CSV HEADER
+Query returned successfully: 72993 rows affected, 1.4 secs execution time.
+
+-- Executing query:
+SELECT * FROM schools
+LIMIT 5
+Total query runtime: 13 msec
+5 rows retrieved.
+
+-- Executing query:
+CREATE TABLE projects (
+	project_id	varchar(32),
+	school_id	varchar(32),
+	teacher_id	varchar(32),
+	teacher_project_posted_sequence bigint,
+	project_type	varchar(25),
+	project_title	text,
+	project_essay	text,
+	project_subject_category_tree	text,
+	project_subject_subcategory_tree	text,
+	project_grade_level_category text,
+	project_resource_category	text,
+	project_cost	double precision,
+	project_posted_date	text,
+	project_current_status varchar(15),
+	project_fully_funded_date varchar(15)
+)
+Query returned successfully with no result in 52 msec.
+
+-- Executing query:
+COPY projects(project_id, school_id, teacher_id, teacher_project_posted_sequence, project_type, project_title, project_essay, project_subject_category_tree, project_subject_subcategory_tree, project_grade_level_category, project_resource_category, project_cost, project_posted_date, project_current_status, project_fully_funded_date)
+FROM '/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data/Projects.csv'
+DELIMITER ','
+CSV HEADER
+ERROR:  invalid input syntax for type double precision: "$490.38"
+CONTEXT:  COPY projects, line 2, column project_cost: "$490.38"
+********** Error **********
+
+ERROR: invalid input syntax for type double precision: "$490.38"
+SQL state: 22P02
+Context: COPY projects, line 2, column project_cost: "$490.38"
+
+-- Executing query:
+DROP TABLE projects
+Query returned successfully with no result in 24 msec.
+
+-- Executing query:
+CREATE TABLE projects (
+	project_id	varchar(32),
+	school_id	varchar(32),
+	teacher_id	varchar(32),
+	teacher_project_posted_sequence bigint,
+	project_type	varchar(25),
+	project_title	text,
+	project_essay	text,
+	project_subject_category_tree	text,
+	project_subject_subcategory_tree	text,
+	project_grade_level_category text,
+	project_resource_category	text,
+	project_cost	varchar(25),
+	project_posted_date	text,
+	project_current_status varchar(15),
+	project_fully_funded_date varchar(15)
+)
+Query returned successfully with no result in 31 msec.
+
+-- Executing query:
+COPY projects(project_id, school_id, teacher_id, teacher_project_posted_sequence, project_type, project_title, project_essay, project_subject_category_tree, project_subject_subcategory_tree, project_grade_level_category, project_resource_category, project_cost, project_posted_date, project_current_status, project_fully_funded_date)
+FROM '/home/dlahtou/ds/metis/McNulty-DonorsChoose-RepeatDonors/data/Projects.csv'
+DELIMITER ','
+CSV HEADER
+Query returned successfully: 1208651 rows affected, 08:48 minutes execution time.
+
