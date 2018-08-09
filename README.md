@@ -1,6 +1,6 @@
 # Predicting which DonorsChoose projects receive funding
 
-This project was completed as part of the Classification module of the Metis data science bootcamp.
+This project was completed as part of the Classification module of the Metis data science bootcamp. Have a look at `Presentation Slides.pdf` for an overview of what I accomplished!
 
 ## Folder Structure
 
